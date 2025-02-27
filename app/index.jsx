@@ -1,63 +1,33 @@
 import {Text , View , StyleSheet , Image , ImageBackground , TouchableOpacity } from 'react-native';
 import startimg from '@/assets/images/index_screen.svg.png'
 import logo from '@/assets/images/logo_fridgeviscum.svg.png'
+import {styled} from 'nativewind'
+
+
 
 const App = () => {
-    return (
-      <View style={styles.container}>
-        {/* Background Image */}
-        <ImageBackground source={startimg} style={styles.backgroundImage} resizeMode="cover">
-          {/* Semi-Transparent Overlay */}
-          <View style={styles.overlay}>
-            <Text style={styles.text}>Start Creating Delicious Food !</Text>
-  
-            {/* Buttons */}
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Button 1</Text>
-            </TouchableOpacity>
-  
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Button 2</Text>
+  return (
+    <View className="flex-1">
+      {/* Background Image */}
+      <ImageBackground source={startimg} className="flex-1 w-full h-full">
+        {/* Overlay */}
+        <View className="absolute inset-0 bg-black/50 flex justify-center items-center gap-6">
+          <Text className="text-white text-2xl font-bold mb-5">
+            Hello there mate!
+          </Text>
+
+          {/* Button Container */}
+          <View className="bg-gradient-to-b from-gray-800/40 to-transparent p-[4px] rounded-[16px]">
+            <TouchableOpacity className="group p-[4px] rounded-[12px] bg-gradient-to-b from-gray-700 to-gray-600 shadow-[0_2px_4px_rgba(0,0,0,0.7)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.6)] active:shadow-[0_0px_1px_rgba(0,0,0,0.8)] active:scale-[0.995] transition-all duration-200">
+              <View className="bg-gradient-to-b from-gray-600 to-gray-700 rounded-[8px] px-3 py-2 flex-row items-center">
+                <Text className="font-semibold text-white">Get Started</Text>
+              </View>
             </TouchableOpacity>
           </View>
-        </ImageBackground>
-      </View>
-    );
-  };
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-    backgroundImage: {
-      flex: 1,
-      width: '100%',
-      height: '100%',
-    },
-    overlay: {
-      ...StyleSheet.absoluteFillObject, // Makes it cover the whole image
-      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    text: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      color: 'white',
-      marginBottom: 20,
-    },
-    button: {
-      backgroundColor: '#ffffff',
-      paddingVertical: 12,
-      paddingHorizontal: 24,
-      borderRadius: 8,
-      marginVertical: 10,
-    },
-    buttonText: {
-      fontSize: 18,
-      color: '#000',
-      fontWeight: 'bold',
-    },
-  });
-  
-  export default App;
+        </View>
+      </ImageBackground>
+    </View>
+  );
+};
+
+export default App;
