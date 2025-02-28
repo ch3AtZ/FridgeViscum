@@ -1,33 +1,56 @@
-import {Text , View , StyleSheet , Image , ImageBackground , TouchableOpacity } from 'react-native';
-import startimg from '@/assets/images/index_screen.svg.png'
-import logo from '@/assets/images/logo_fridgeviscum.svg.png'
-import {styled} from 'nativewind'
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-
-
-const App = () => {
+export default function App() {
   return (
-    <View className="flex-1">
-      {/* Background Image */}
-      <ImageBackground source={startimg} className="flex-1 w-full h-full">
-        {/* Overlay */}
-        <View className="absolute inset-0 bg-black/50 flex justify-center items-center gap-6">
-          <Text className="text-white text-2xl font-bold mb-5">
-            Hello there mate!
-          </Text>
-
-          {/* Button Container */}
-          <View className="bg-gradient-to-b from-gray-800/40 to-transparent p-[4px] rounded-[16px]">
-            <TouchableOpacity className="group p-[4px] rounded-[12px] bg-gradient-to-b from-gray-700 to-gray-600 shadow-[0_2px_4px_rgba(0,0,0,0.7)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.6)] active:shadow-[0_0px_1px_rgba(0,0,0,0.8)] active:scale-[0.995] transition-all duration-200">
-              <View className="bg-gradient-to-b from-gray-600 to-gray-700 rounded-[8px] px-3 py-2 flex-row items-center">
-                <Text className="font-semibold text-white">Get Started</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ImageBackground>
+    <View style={styles.container}>
+      <Text style={styles.title}>FridgeViscum</Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Button 1</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Button 2</Text>
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.subtitle}>
+        This is some smaller text below the buttons.
+      </Text>
     </View>
   );
-};
+}
 
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    color: "white",
+    fontSize: 32,
+    fontWeight: "bold",
+    marginBottom: 40,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    gap: 15,
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: "white",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: "black",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    color: "white",
+    fontSize: 18,
+  },
+});
