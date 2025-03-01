@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Pressable } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Pressable } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 import fridge from '@/assets/images/fridgeimg.png';
 import { Link } from "expo-router";
 
@@ -13,10 +14,18 @@ export default function App() {
           <View style={styles.card}>
             <Text style={styles.cardText}>Discover recipes from what you have in your fridge. Track calories & eat smarter! 🌱</Text>
           </View>
-           <Link href="/main" asChild >
-          <Pressable style={styles.button} activeOpacity={0.8}>
-            <Text style={styles.buttonText}>Get Started</Text>
-          </Pressable>
+          
+          <Link href="/main" asChild>
+            <Pressable activeOpacity={0.8}>
+              <LinearGradient
+                colors={['#FF7E5F', '#FD3A69']}
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 0}}
+                style={styles.button}
+              >
+                <Text style={styles.buttonText}>Get Started</Text>
+              </LinearGradient>
+            </Pressable>
           </Link>
         </View>
       </ImageBackground>
@@ -41,7 +50,7 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     width: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 20,
@@ -74,7 +83,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    backgroundColor: "linear-gradient(135deg, #FF7E5F, #FD3A69)",
     paddingVertical: 14,
     paddingHorizontal: 40,
     borderRadius: 25,
