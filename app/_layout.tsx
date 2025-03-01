@@ -31,8 +31,8 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name = 'index' options = {{headerShown:false , title: 'Home'}}></Stack.Screen>
+        <Stack.Screen name = 'main' options = {{headerShown:false , title:'Home'}}></Stack.Screen>
       </Stack>
-      <StatusBar style="auto" />
     </ThemeProvider>
   );
 }
