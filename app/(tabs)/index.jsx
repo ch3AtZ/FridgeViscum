@@ -64,7 +64,7 @@ export default function App() {
             onChangeText={setPassword} 
             secureTextEntry
           />
-
+          <Link href="./signIn.jsx" asChild>
           <Pressable disabled={loading}>
             <LinearGradient
               colors={['#FF7E5F', '#FD3A69']}
@@ -79,6 +79,7 @@ export default function App() {
               )}
             </LinearGradient>
           </Pressable>
+          </Link>
 
           <Pressable  disabled={loading}>
             <LinearGradient
