@@ -64,7 +64,7 @@ export default function App() {
             onChangeText={setPassword} 
             secureTextEntry
           />
-          <Link href="./signIn.jsx" asChild>
+          
           <Pressable disabled={loading}>
             <LinearGradient
               colors={['#FF7E5F', '#FD3A69']}
@@ -79,8 +79,9 @@ export default function App() {
               )}
             </LinearGradient>
           </Pressable>
-          </Link>
 
+
+          <Link href="/signIn" asChild>   
           <Pressable  disabled={loading}>
             <LinearGradient
               colors={['#57C84D', '#36A420']}
@@ -88,15 +89,12 @@ export default function App() {
               end={{x: 1, y: 0}}
               style={[styles.button, { marginTop: 10 }]}
             >
-              {loading ? (
-                <ActivityIndicator color="white" />
-              ) : (
-                <Text style={styles.buttonText}>Sign Up</Text>
-              )}
+            <Text style={styles.buttonText}>Sign Up</Text>
             </LinearGradient>
           </Pressable>
+          </Link>
 
-          <Link href="./main.jsx" asChild>
+          <Link href="/main" asChild>
             <Pressable style={styles.linkButton}>
               <Text style={styles.linkText}>Get Started</Text>
             </Pressable>
