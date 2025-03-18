@@ -10,34 +10,7 @@ export default function App() {
    const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  /*
-  
-  const auth = getAuth(); // Get Firebase auth instance
 
-  const signUp = async () => {
-    setLoading(true);
-    try {
-      await auth.createUserWithEmailAndPassword(email, password);
-      alert('Check your email!');
-    } catch (error) {
-      alert('Registration failed');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const signIn = async () => {
-    setLoading(true);
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      alert('Login Successful');
-    } catch (error) {
-      alert('Login Unsuccessful: ');
-    } finally {
-      setLoading(false);
-    }
-  };
- */
   return (
     <View style={styles.container}>
       <ImageBackground source={require('@/assets/images/fridgeimg.png')} style={styles.imgContainer} resizeMode="cover" blurRadius={5}>
