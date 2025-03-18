@@ -5,11 +5,21 @@ import { Link } from "expo-router";
 import { getAuth } from "@react-native-firebase/auth";
 import { firebase } from "@react-native-firebase/auth";
 import { FirebaseError } from "@firebase/app";
+import auth from '@react-native-firebase/auth'
 
 export default function signIn() {
     const [Email , setEmail ] = useState('');
     const [Password , setPassword] = useState('');
     const [loading , setLoading] = useState(false);
+
+    const SignUp = () => {
+        auth().createUserWithEmailAndPassword("Email","Password").then(()=>{
+            console.log('User created')
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
 
     return (
         <View style={styles.container}>
