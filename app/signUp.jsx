@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         color: "#FFF",
         fontSize: 16,
-        marginBottom: 10,
+        marginBottom: 11,
 
     }
 })
