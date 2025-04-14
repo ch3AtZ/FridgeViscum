@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor: "#2C2C2C",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center"
     },
     input:{
         width:"90%",
