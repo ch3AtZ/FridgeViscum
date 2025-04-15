@@ -4,7 +4,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Link } from "expo-router";
 import { getAuth } from "@react-native-firebase/auth";
 import { firebase } from "@react-native-firebase/auth";
-import { FirebaseError } from "@firebase/app";
 import auth from '@react-native-firebase/auth'
 
 export default function signIn() {
