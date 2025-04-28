@@ -18,7 +18,7 @@ export default function signIn() {
             <TextInput
                 style={styles.input}
                 placeholder="Email"
-                placeholderTextColor="#CCC"
+                placeholderTextColor="#CCCC"
                 value={Email}
                 onChangeText={setEmail}
                 keyboardType="email-address"
