@@ -8,9 +8,8 @@ export default function signIn() {
     const [loading , setLoading] = useState(false);
 
     const handleSignIn = () => {
-        // Handle login logic here
         setLoading(true);
-        setTimeout(() => setLoading(false), 2000); // mock loading
+        setTimeout(() => setLoading(false), 2000); 
     };
 
     return (
