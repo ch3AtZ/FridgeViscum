@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList, Image } from "react-native";
 import recipebookimg from '@/assets/images/recipe_book_img.jpg';
 
 export default function Main() {
   const [items, setItems] = useState([]);
   const [input, setInput] = useState("");
+  const [recipes, setRecipes] = useState([]);
 
   const addItem = () => {
     if (input.trim() !== "") {
@@ -12,6 +13,25 @@ export default function Main() {
       setInput("");
     }
   };
+
+  const generateRecipes = () => {
+    if (items.length >= 2) {
+      const possibleRecipes = [
+        "Pasta Primavera",
+        "Stir Fry Delight",
+        "Quick Salad Bowl",
+        "Simple Soup",
+        "Easy Casserole"
+      ];
+      setRecipes(possibleRecipes);
+    } else {
+      setRecipes([]);
+    }
+  };
+
+  useEffect(() => {
+    generateRecipes();
+  }, [items]);
 
   return (
     <View style={styles.container}>
@@ -27,7 +47,6 @@ export default function Main() {
         <Text style={styles.buttonText}>Add Item</Text>
       </TouchableOpacity>
       
-      
       <View style={styles.itemsContainer}>
         <FlatList
           data={items}
@@ -40,8 +59,23 @@ export default function Main() {
           )}
         />
       </View>
+
+      {recipes.length > 0 && (
+        <View style={styles.recipesContainer}>
+          <Text style={styles.recipesTitle}>Suggested Recipes:</Text>
+          <FlatList
+            data={recipes}
+            keyExtractor={(item, index) => index.toString()}
+            numColumns={2}
+            renderItem={({ item }) => (
+              <View style={styles.recipeCard}>
+                <Text style={styles.recipeTitle}>{item}</Text>
+              </View>
+            )}
+          />
+        </View>
+      )}
       
-     
       <View style={styles.recipeCard}>
         <Text style={styles.recipeTitle}>Get easy to make Recipes!</Text>
         <Image source={recipebookimg} style={styles.recipeImage} />
@@ -89,8 +123,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 20,
-    marginTop:20,
-    width:1000
+    marginTop: 20,
+    width: 1000
   },
   itemCard: {
     backgroundColor: "#444",
@@ -112,19 +146,32 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 14,
   },
+  recipesContainer: {
+    width: "100%",
+    marginTop: 20,
+  },
+  recipesTitle: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 15,
+    textAlign: "center",
+  },
   recipeCard: {
     backgroundColor: "#FF6B6B",
-    padding: 20,
-    borderRadius: 150,
-    width: "90%",
-    marginTop: 100,
+    padding: 15,
+    borderRadius: 10,
+    margin: 5,
+    width: "48%",
     alignItems: "center",
+    justifyContent: "center",
+    height: 100,
   },
   recipeTitle: {
     color: "white",
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 10,
+    textAlign: "center",
   },
   recipeImage: {
     width: 50,
