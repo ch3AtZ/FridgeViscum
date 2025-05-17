@@ -27,7 +27,7 @@ export default function Main() {
         <Text style={styles.buttonText}>Add Item</Text>
       </TouchableOpacity>
       
-      {/* Display Items */}
+      
       <View style={styles.itemsContainer}>
         <FlatList
           data={items}
@@ -41,7 +41,7 @@ export default function Main() {
         />
       </View>
       
-      {/* Recipe Card */}
+     
       <View style={styles.recipeCard}>
         <Text style={styles.recipeTitle}>Get easy to make Recipes!</Text>
         <Image source={recipebookimg} style={styles.recipeImage} />
