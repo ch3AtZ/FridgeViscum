@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList, Image } from "react-native";
 import recipebookimg from '@/assets/images/recipe_book_img.jpg';
 
@@ -6,6 +6,7 @@ export default function Main() {
   const [items, setItems] = useState([]);
   const [input, setInput] = useState("");
   const [recipes, setRecipes] = useState([]);
+  const [showRecipes, setShowRecipes] = useState(false);
 
   const addItem = () => {
     if (input.trim() !== "") {
@@ -24,14 +25,11 @@ export default function Main() {
         "Easy Casserole"
       ];
       setRecipes(possibleRecipes);
+      setShowRecipes(true);
     } else {
-      setRecipes([]);
+      alert("Please add at least 2 items to get recipe suggestions!");
     }
   };
-
-  useEffect(() => {
-    generateRecipes();
-  }, [items]);
 
   return (
     <View style={styles.container}>
@@ -60,7 +58,12 @@ export default function Main() {
         />
       </View>
 
-      {recipes.length > 0 && (
+      <TouchableOpacity style={styles.recipeButton} onPress={generateRecipes}>
+        <Text style={styles.recipeButtonText}>Get easy to make Recipes!</Text>
+        <Image source={recipebookimg} style={styles.recipeImage} />
+      </TouchableOpacity>
+
+      {showRecipes && recipes.length > 0 && (
         <View style={styles.recipesContainer}>
           <Text style={styles.recipesTitle}>Suggested Recipes:</Text>
           <FlatList
@@ -75,11 +78,6 @@ export default function Main() {
           />
         </View>
       )}
-      
-      <View style={styles.recipeCard}>
-        <Text style={styles.recipeTitle}>Get easy to make Recipes!</Text>
-        <Image source={recipebookimg} style={styles.recipeImage} />
-      </View>
     </View>
   );
 }
@@ -146,6 +144,27 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 14,
   },
+  recipeButton: {
+    backgroundColor: "#FF6B6B",
+    padding: 15,
+    borderRadius: 10,
+    width: "90%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  recipeButtonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+    marginRight: 10,
+  },
+  recipeImage: {
+    width: 30,
+    height: 30,
+    resizeMode: "contain",
+  },
   recipesContainer: {
     width: "100%",
     marginTop: 20,
@@ -172,10 +191,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
-  },
-  recipeImage: {
-    width: 50,
-    height: 50,
-    resizeMode: "contain",
   },
 });
